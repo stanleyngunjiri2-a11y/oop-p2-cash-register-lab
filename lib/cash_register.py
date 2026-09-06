@@ -34,16 +34,20 @@ class CashRegister:
         })
 
     # applies the discount to the total
+      # applies the discount to the total
     def apply_discount(self):
         if self.discount == 0:
-            return "There is no discount to apply."
+            print("There is no discount to apply.")
+            return
 
         discount_amount = self.total * (self.discount / 100)
         self.total -= discount_amount
 
-        return "After the discount, the total comes to ${}.".format(
-            self.total
-        )
+        print("After the discount, the total comes to ${}.".format(
+            int(self.total)
+        ))
+
+        self.previous_transactions.pop()
 
     # voids the most recent transaction
     def void_last_transaction(self):
