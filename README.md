@@ -121,3 +121,35 @@ Before you submit your solution, you need to save your progress with git.
 4. When you are ready to submit, click the ***Load Lab: Object Oriented Programming (OOP)- Part 2- Cash Register*** button in Canvas to launch CodeGrade.
   * Click on + Create Submission. Connect your repository for this lab.
   * For additional information on submitting assignments in CodeGrade: [Getting Started in Canvas](https://help.codegrade.com/for-students/getting-started/getting-started-in-canvas).
+
+## Cash Register Application
+
+This project implements a Python-based Cash Register using Object-Oriented Programming (OOP).
+
+### Features
+
+- Create a cash register with an optional discount.
+- Validate discounts between 0 and 100.
+- Add items with their price and quantity.
+- Calculate the total cost of items.
+- Apply percentage discounts to the total.
+- Track previous transactions.
+- Void the most recent transaction.
+- Handle cases where there are no transactions to void or discount.
+
+### Example
+
+```python
+from lib.cash_register import CashRegister
+
+register = CashRegister(20)
+
+register.add_item("Coffee", 100, 2)
+
+print(register.total)
+# 200
+
+register.apply_discount()
+
+print(register.total)
+# 160.0
