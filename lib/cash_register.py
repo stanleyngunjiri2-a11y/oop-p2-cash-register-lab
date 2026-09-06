@@ -6,8 +6,7 @@ class CashRegister:
         self.items = []
         self.previous_transactions = []
 
-    # Discount property with getter and setter methods.
-    # Ensures discount is an integer between 0 and 100.
+    # discounts property
     @property
     def discount(self):
         return self._discount
@@ -19,46 +18,46 @@ class CashRegister:
         else:
             print("Not valid discount")
 
-    # Adds items to the register, updates the total,
-    # and stores the item details in previous transactions.
-    def add_item(self, item, price, quantity):
+    # adds an item to the cash register
+    def add_item(self, item, price, quantity=1):
         self.total += price * quantity
-        self.items.append(item)
 
+        # adds the item once for each quantity
+        for _ in range(quantity):
+            self.items.append(item)
+
+        # stores the transaction
         self.previous_transactions.append({
             "item": item,
             "price": price,
             "quantity": quantity
         })
 
-    # Applies the discount to the total if there are previous transactions.
-    # If there are no transactions, it prints a message.
+    # applies the discount to the total
     def apply_discount(self):
-        if len(self.previous_transactions) == 0:
-            print("There is no discount to apply.")
-            return
+        if self.discount == 0:
+            return "There is no discount to apply."
 
-        # Calculate and subtract the percentage discount.
-        discount_amount = self.total * self.discount / 100
+        discount_amount = self.total * (self.discount / 100)
         self.total -= discount_amount
 
-        self.previous_transactions.pop()
+        return "After the discount, the total comes to ${}.".format(
+            self.total
+        )
 
-    # Checks whether there is anything to void.
-    # If there is, it removes the last transaction and
-    # updates the total and items accordingly.
+    # voids the most recent transaction
     def void_last_transaction(self):
-        # Check if there are any transactions to void.
         if len(self.previous_transactions) == 0:
             print("There is no transaction to void.")
             return
 
-        # Remove the most recent transaction.
         transaction = self.previous_transactions.pop()
 
-        # Subtract the transaction amount from the total.
         self.total -= transaction["price"] * transaction["quantity"]
 
-        # Remove the corresponding item.
-        self.items.pop()
+        quantity = transaction["quantity"]
+        item = transaction["item"]
 
+        # removes the correct number of items
+        for _ in range(quantity):
+            self.items.remove(item)
