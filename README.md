@@ -27,6 +27,19 @@ Build a model for a cash register
 * Apply discounts
 * Void previous transactions
 
+## Cash Register Features
+
+The Cash Register application is built using Python Object-Oriented Programming (OOP) and provides the following functionality:
+
+- Create a cash register with an optional discount.
+- Validate discounts to ensure they are integers between 0 and 100.
+- Add items with their price and quantity.
+- Calculate the total cost of items.
+- Apply a percentage discount to the total.
+- Keep track of previous transactions.
+- Void the most recent transaction.
+- Update the total and items when a transaction is voided.
+
 ### Task 2: Determine the Design
 
 Cash Register
@@ -121,3 +134,14 @@ Before you submit your solution, you need to save your progress with git.
 4. When you are ready to submit, click the ***Load Lab: Object Oriented Programming (OOP)- Part 2- Cash Register*** button in Canvas to launch CodeGrade.
   * Click on + Create Submission. Connect your repository for this lab.
   * For additional information on submitting assignments in CodeGrade: [Getting Started in Canvas](https://help.codegrade.com/for-students/getting-started/getting-started-in-canvas).
+
+## Project Structure
+
+```text
+oop-p2-cash-register-lab/
+├── lib/
+│   └── cash_register.py
+├── README.md
+├── Pipfile
+├── Pipfile.lock
+└── pytest.ini
